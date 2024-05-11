@@ -32,12 +32,12 @@ Speech and Language Processing. Daniel Jurafsky & James H. Martin. Copyright © 
 rights reserved. Draft of February 3, 2024.
 :::
 
-##
+
+
+## View the Data
 
 ```{python}
-#| label: fig-polar
-#| fig-cap: "A line plot on a polar axis"
-#| output-location: slide
+
 
 import os
 import torch
@@ -50,16 +50,59 @@ from fastbook import *
 generator_seed = 12623637008
 
 
+
 ssa_names = open('../names_1880_To_2022.txt').read().splitlines()
 
+total_number_names = len(ssa_names)
+print("total number of names:", total_number_names)
+
+#random.seed(generator_seed) # uncomment if you want the names to always be the same.
+print("random sample of 5 names: ", random.choices(ssa_names, k=5))
+
+min_len_word = min(len(w) for w in ssa_names)
+max_len_word = max(len(w) for w in ssa_names)
+
+print("min length word:", min_len_word)
+print("max length word:", max_len_word)
+
+```
+## View the Data
+
+```{python}
+shortest_names = [w for w in ssa_names if len(w) <= min_len_word]
+print("shortest_names:", shortest_names)
+```
+## View the Data
+
+
+```{python}
+longest_names = [w for w in ssa_names if len(w) >= max_len_word]
+print("longest_names:", longest_names)
+
+```
+## Template
+
+```{python}
+shortest_names = [w for w in ssa_names if len(w) <= min_len_word]
+print("shortest_names:", shortest_names)
+```
+## Tokenizer
+
+```{python}
 # tokenizer: the tokens are '.' + lowercase alphabet
 tokens = ['.'] + sorted(list(set((''.join(ssa_names)))))
+print("tokens:", tokens)
 
 # token to int converter
 stoi = {s:i for i,s in enumerate(tokens)} # string to int
-
+print("stoi:", stoi)
 # int to token converter
 itos = {i:s for s,i in stoi.items()} # int to string
+print("itos:", itos)
+```
+##
+
+```{python}
 
 # block size is the context length
 def build_dataset(words, block_size = 1, verbose = False): 
@@ -133,6 +176,9 @@ plt.show()
 
 ```
 
+
+## Curate Data 
+- keep only names at a 100 popularity level
 
 ## Equation
 

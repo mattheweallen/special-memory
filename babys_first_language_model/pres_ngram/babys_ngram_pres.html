@@ -350,22 +350,68 @@
 <aside><div>
 <p>Speech and Language Processing. Daniel Jurafsky &amp; James H. Martin. Copyright © 2023. All rights reserved. Draft of February 3, 2024.</p>
 </div><ol class="aside-footnotes"><li id="fn1"><p><a href="https://web.stanford.edu/~jurafsky/slp3/3.pdf">Chapter 3</a></p></li></ol></aside></section>
+<section id="view-the-data" class="slide level2">
+<h2>View the Data</h2>
+<div id="cfb85a2d" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>total number of names: 102449
+random sample of 5 names:  ['tong', 'linwood', 'devanny', 'khamilla', 'pascal']
+min length word: 2
+max length word: 15</code></pre>
+</div>
+</div>
+</section>
+<section id="view-the-data-1" class="slide level2">
+<h2>View the Data</h2>
+<div id="f7fea153" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>shortest_names: ['ii', 'ja', 'vi', 'od', 'kd', 'ax', 'jd', 'jp', 'st', 'sa', 'rc', 'jt', 'xi', 'ju', 'zy', 'mi', 'kj', 'cj', 'ho', 'se', 'io', 'ge', 'eh', 'jw', 'un', 'kc', 'no', 'an', 'mr', 'va', 'oz', 'du', 'ji', 'ah', 'tr', 'mc', 'si', 'zi', 'ld', 'go', 'pj', 'la', 'qi', 'jm', 'or', 'bj', 'sy', 'lu', 'ao', 'zo', 'su', 'ed', 'xu', 'za', 'ra', 'bb', 'na', 'ry', 'ki', 'pa', 'gy', 'md', 'vu', 'fu', 'ti', 'lj', 'jo', 'ad', 'ej', 'di', 'jl', 'my', 'ku', 'mu', 'lc', 'vy', 'te', 'ar', 'aj', 'ze', 'rb', 'ly', 'jc', 'el', 'so', 'ya', 'ma', 'gi', 'ia', 'yu', 'po', 'li', 'ac', 'lb', 'sj', 'tu', 'ke', 'fe', 'ro', 'kt', 'dj', 'al', 'eb', 'wa', 'mj', 'ab', 'oh', 'rj', 'tc', 'je', 'hy', 'lg', 'yi', 'om', 'yy', 'oc', 'ty', 'me', 'ko', 'av', 'ny', 'ng', 'yo', 'ai', 'jb', 'ka', 'jj', 'ru', 'ea', 'ni', 'ky', 'da', 'rd', 'de', 'le', 'bo', 'do', 'ta', 'rl', 'jr', 'ye', 'in', 'mo', 'ok', 'wc', 'hu', 'wm', 'ha', 'bg', 'ba', 'be', 'lo', 'cy', 'tj', 'en']</code></pre>
+</div>
+</div>
+</section>
+<section id="view-the-data-2" class="slide level2">
+<h2>View the Data</h2>
+<div id="2e937aab" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>longest_names: ['laurenelizabeth', 'ryanchristopher', 'christianjoseph', 'sophiaelizabeth', 'mariadelosangel', 'michaelchristop', 'ashleyelizabeth', 'johnchristopher', 'muhammadibrahim', 'jordanalexander', 'joshuaalexander', 'christophermich', 'christopherpaul', 'christianmichae', 'christianalexan', 'jonathanmichael', 'christiandaniel', 'davidchristophe', 'gabrielalexande', 'christopherdavi', 'mariadelrosario', 'christopherjose', 'christopherjohn', 'jordanchristoph', 'markchristopher', 'seanchristopher', 'christopheranth', 'kevinchristophe', 'christopherjame', 'jaydenalexander', 'christiananthon', 'christopherryan', 'muhammadmustafa', 'franciscojavier', 'hannahelizabeth', 'christianjoshua', 'matthewalexande']</code></pre>
+</div>
+</div>
+</section>
+<section id="template" class="slide level2">
+<h2>Template</h2>
+<div id="3b8c3f8b" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>shortest_names: ['ii', 'ja', 'vi', 'od', 'kd', 'ax', 'jd', 'jp', 'st', 'sa', 'rc', 'jt', 'xi', 'ju', 'zy', 'mi', 'kj', 'cj', 'ho', 'se', 'io', 'ge', 'eh', 'jw', 'un', 'kc', 'no', 'an', 'mr', 'va', 'oz', 'du', 'ji', 'ah', 'tr', 'mc', 'si', 'zi', 'ld', 'go', 'pj', 'la', 'qi', 'jm', 'or', 'bj', 'sy', 'lu', 'ao', 'zo', 'su', 'ed', 'xu', 'za', 'ra', 'bb', 'na', 'ry', 'ki', 'pa', 'gy', 'md', 'vu', 'fu', 'ti', 'lj', 'jo', 'ad', 'ej', 'di', 'jl', 'my', 'ku', 'mu', 'lc', 'vy', 'te', 'ar', 'aj', 'ze', 'rb', 'ly', 'jc', 'el', 'so', 'ya', 'ma', 'gi', 'ia', 'yu', 'po', 'li', 'ac', 'lb', 'sj', 'tu', 'ke', 'fe', 'ro', 'kt', 'dj', 'al', 'eb', 'wa', 'mj', 'ab', 'oh', 'rj', 'tc', 'je', 'hy', 'lg', 'yi', 'om', 'yy', 'oc', 'ty', 'me', 'ko', 'av', 'ny', 'ng', 'yo', 'ai', 'jb', 'ka', 'jj', 'ru', 'ea', 'ni', 'ky', 'da', 'rd', 'de', 'le', 'bo', 'do', 'ta', 'rl', 'jr', 'ye', 'in', 'mo', 'ok', 'wc', 'hu', 'wm', 'ha', 'bg', 'ba', 'be', 'lo', 'cy', 'tj', 'en']</code></pre>
+</div>
+</div>
+</section>
+<section id="tokenizer" class="slide level2">
+<h2>Tokenizer</h2>
+<div id="bb6910e7" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>tokens: ['.', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+stoi: {'.': 0, 'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10, 'k': 11, 'l': 12, 'm': 13, 'n': 14, 'o': 15, 'p': 16, 'q': 17, 'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 22, 'w': 23, 'x': 24, 'y': 25, 'z': 26}
+itos: {0: '.', 1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h', 9: 'i', 10: 'j', 11: 'k', 12: 'l', 13: 'm', 14: 'n', 15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 20: 't', 21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z'}</code></pre>
+</div>
+</div>
+</section>
 <section id="section" class="slide level2">
 <h2></h2>
-<div id="cell-fig-polar" class="cell" data-execution_count="1">
+<div id="9a3efed1" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
-<div id="fig-polar" class="quarto-figure quarto-figure-center quarto-float">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="babys_ngram_pres_files/figure-revealjs/fig-polar-output-1.png" width="684" height="684">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: A line plot on a polar axis
-</figcaption>
+<div>
+<figure>
+<p><img data-src="babys_ngram_pres_files/figure-revealjs/cell-7-output-1.png" width="684" height="684"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="curate-data" class="slide level2">
+<h2>Curate Data</h2>
+<ul>
+<li>keep only names at a 100 popularity level</li>
+</ul>
 </section>
 <section id="equation" class="slide level2">
 <h2>Equation</h2>
