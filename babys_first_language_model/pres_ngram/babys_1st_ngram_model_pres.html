@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
+<script src="babys_1st_ngram_model_pres_files/libs/tone/tone.js"></script>
 <script src="babys_1st_ngram_model_pres_files/libs/clipboard/clipboard.min.js"></script>
 <script src="babys_1st_ngram_model_pres_files/libs/quarto-html/tabby.min.js"></script>
 <script src="babys_1st_ngram_model_pres_files/libs/quarto-html/popper.min.js"></script>
@@ -7,11 +8,10 @@
 <link href="babys_1st_ngram_model_pres_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="babys_1st_ngram_model_pres_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="babys_1st_ngram_model_pres_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="babys_1st_ngram_model_pres_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="babys_1st_ngram_model_pres_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.550">
 
-  <meta name="author" content="John Doe">
-  <title>Habits</title>
+  <title>Presentation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,6 +34,8 @@
   <link href="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -321,21 +323,36 @@
     }
   </style>
 </head>
-<body class="quarto-light">
+<body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Habits</h1>
+  <h1 class="title">Presentation</h1>
 
 <div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-John Doe 
-</div>
-</div>
 </div>
 
+</section>
+<section id="ngram-model" class="slide level2">
+<h2>NGram Model</h2>
+<h3 id="bigram-example">Bigram Example</h3>
+<p><span class="math display">\[\Pr( dog | the ) = \dfrac{C(the\;dog)}{C(the)} \]</span></p>
+<h3 id="trigram-example">Trigram Example</h3>
+<p><span class="math display">\[\Pr( dog | the\;small )\]</span></p>
+</section>
+<section id="markov-assumption" class="slide level2">
+<h2>Markov Assumption</h2>
+<ul>
+<li>Markov models are the class of probabilistic models that assume we can predict the probability of some future unit without looking too far into the past. <sup>1</sup></li>
+</ul>
+
+<aside><div>
+<p>Speech and Language Processing. Daniel Jurafsky &amp; James H. Martin. Copyright © 2023. All rights reserved. Draft of February 3, 2024.</p>
+</div><ol class="aside-footnotes"><li id="fn1"><p><a href="https://web.stanford.edu/~jurafsky/slp3/3.pdf">Chapter 3</a></p></li></ol></aside></section>
+<section id="equation" class="slide level2">
+<h2>Equation</h2>
+<p><span class="math display">\[c = \sqrt{a^2 + b^2}\]</span></p>
 </section>
 <section id="getting-up" class="slide level2">
 <h2>Getting up</h2>
@@ -356,6 +373,7 @@ John Doe
 </div>
 </div>
 </section>
+
     </div>
   </div>
 
@@ -366,6 +384,8 @@ John Doe
   <script src="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/quarto-tone/tone.js"></script>
   <script src="babys_1st_ngram_model_pres_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -381,12 +401,13 @@ John Doe
       // https://revealjs.com/config/
       Reveal.initialize({
 'controlsAuto': true,
-'previewLinksAuto': false,
+'previewLinksAuto': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"right","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"width":"wide"},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -407,10 +428,10 @@ John Doe
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
+        showSlideNumber: 'print',
 
         // Add the current slide number to the URL hash so that reloading the
         // page/copying the URL will return you to the same slide
@@ -557,7 +578,7 @@ John Doe
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoTone, QuartoSupport,
 
           RevealMath,
           RevealNotes,
