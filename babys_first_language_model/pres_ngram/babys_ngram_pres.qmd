@@ -1,0 +1,149 @@
+---
+title: "Presentation"
+execute:
+  echo: false
+jupyter: python3
+format:
+  revealjs: 
+    theme: dark
+    menu:
+      side: right
+      width: wide
+    slide-number: true
+    show-slide-number: print
+    preview-links: auto
+    slide-tone: true
+    chalkboard: true
+---
+
+## NGram Model
+### Bigram Example
+$$\Pr( dog | the ) = \dfrac{C(the\;dog)}{C(the)} $$
+
+### Trigram Example
+$$\Pr( dog | the\;small )$$
+
+## Markov Assumption
+
+- Markov models are the class of probabilistic models that assume we can predict the probability of some future unit without looking too far into the past. ^[[Chapter 3](https://web.stanford.edu/~jurafsky/slp3/3.pdf)]
+
+::: aside
+Speech and Language Processing. Daniel Jurafsky & James H. Martin. Copyright © 2023. All
+rights reserved. Draft of February 3, 2024.
+:::
+
+##
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+#| output-location: slide
+
+import os
+import torch
+import random
+import torch.nn.functional as F
+import matplotlib.pyplot as plt # for making figures
+%matplotlib inline
+from fastbook import *
+
+generator_seed = 12623637008
+
+
+ssa_names = open('../names_1880_To_2022.txt').read().splitlines()
+
+# tokenizer: the tokens are '.' + lowercase alphabet
+tokens = ['.'] + sorted(list(set((''.join(ssa_names)))))
+
+# token to int converter
+stoi = {s:i for i,s in enumerate(tokens)} # string to int
+
+# int to token converter
+itos = {i:s for s,i in stoi.items()} # int to string
+
+# block size is the context length
+def build_dataset(words, block_size = 1, verbose = False): 
+    X, Y = [], []
+    
+    ndex = 0
+    num_examples_to_print = 2
+
+    for w in words:
+        if verbose and ndex < num_examples_to_print:
+            print(w)
+            print("input ---> output")
+        context = [0] * block_size
+        for ch in w + '.':
+            ix = stoi[ch]
+            X.append(context)
+            Y.append(ix)
+            if verbose and ndex < num_examples_to_print:
+                # pretty print first three names
+                print(''.join(itos[i] for i in context), '--->', itos[ix])
+                
+            context = context[1:] + [ix] # crop and append
+
+        ndex = ndex + 1
+
+    X = torch.tensor(X)
+    Y = torch.tensor(Y)
+    return X, Y
+
+# shuffle the words and then get the training splits
+random.shuffle(ssa_names) # mix the words up
+n1 = int(0.8*len(ssa_names)) # cut off point for training set
+n2 = int(0.9*len(ssa_names)) # cut off for dev set
+
+# build bigram dataset. note second dimension of x is 1. this is the context length (block_size)
+words_tr = ssa_names[:n1]
+Xtr, Ytr = build_dataset(words_tr, verbose=False) # training set used to update model parameters
+#print("Xtr shape:", Xtr.shape, "Ytr shape: ", Ytr.shape)
+
+words_dev = ssa_names[n1:n2]
+Xdev, Ydev = build_dataset(words_dev, verbose=False) # development or validation set used to tune hyper parameters like embedding size or hidden layer size
+#print("Xdev shape:", Xdev.shape, "Ydev shape: ", Ydev.shape)
+
+words_te = ssa_names[n2:]
+Xte, Yte = build_dataset(words_te, verbose=False) # test set used once or sparingly. report the performance of the model based on this set.
+#print("Xte shape:", Xte.shape, "Yte shape: ", Yte.shape)
+
+# takes X and Y from Build Dataset and Creates a Counts Tensor
+# counts_shape is the shape of the tensor for counts
+def create_counts(X, Y, counts_shape = (27,27)):
+    N = torch.zeros(counts_shape, dtype=torch.int32) # initialize tensor to 0
+    for ndx in zip(X, Y):
+        ndx = ndx[0].tolist() + [ndx[1].item()]
+        N[tuple(ndx)] += 1
+
+    return N
+
+N = create_counts(Xtr, Ytr)
+
+# visuzalize counts
+# create image of N to visualize the counts of two character combinations
+plt.figure(figsize=(9,9))
+plt.imshow(N, cmap='Blues')
+for i in range(27):
+    for j in range(27):
+        chstr = itos[i] + itos[j] # every 2 character combination where order matters
+        plt.text(j, i, chstr, ha="center", va="bottom", color="gray", fontsize=8)
+        plt.text(j, i, N[i,j].item(), ha="center", va="top", color="gray", fontsize=5)
+plt.axis('off');
+plt.show()
+
+```
+
+
+## Equation
+
+$$c = \sqrt{a^2 + b^2}$$
+
+## Getting up
+
+- Turn off alarm
+- Get out of bed
+
+## Going to sleep
+
+- Get in bed
+- Count sheep
